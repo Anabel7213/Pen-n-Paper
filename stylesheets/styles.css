@@ -1,0 +1,429 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+:root {
+  --light:#F5F5F5;
+  --dark:#37393D;
+  --gray:#EBECEF;
+  --hoverbg:#000000;
+  --shadowbtn:0px 8px 12px 0px rgba(76, 93, 112, 0.3);
+  --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 512 512'%3E%3C!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --%3E%3Cpath d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/%3E%3C/svg%3E");
+  --textareahover: 0px 2px 4px 0px rgba(76, 93, 112, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--dark);
+}
+* body {
+  background-color: var(--light) !important;
+}
+* body .toggle-theme {
+  cursor: pointer;
+}
+* body .mobile-nav {
+  display: none;
+}
+* body .hamburger {
+  display: none;
+}
+* body .bg-padding {
+  background-color: var(--light);
+  width: 1300px;
+  height: 700px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+}
+* body .right-end {
+  gap: 100px;
+}
+* body .navigation h2, * body .mobile-nav h2 {
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+* body .navigation a, * body .mobile-nav a {
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--dark);
+}
+* body .anchor-item:hover {
+  border-bottom: 4px solid var(--dark);
+  animation: bounce 2s infinite;
+}
+* body .main {
+  max-width: 760px;
+  margin: 5rem auto;
+}
+* body .main h1 {
+  font-size: 4rem;
+  font-weight: 600;
+}
+* body .main p {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+* body .main .translator-button {
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: var(--dark);
+}
+* body .main .translator-button:hover {
+  background-color: var(--hoverbg);
+  box-shadow: var(--shadowbtn);
+}
+* body .main .translator-button a {
+  text-decoration: none;
+  color: var(--light);
+}
+* body .main .dictionary-button {
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: transparent;
+}
+* body .main .dictionary-button:hover {
+  background-color: var(--gray);
+}
+* body .main .dictionary-button a {
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.search {
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  display: flex;
+  margin: 6rem auto;
+}
+.search h1 {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.search .word-search-btn, .mobile-search-container .word-search-btn {
+  font-size: 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--light);
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  background-color: var(--dark);
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.search .word-search-btn:hover, .mobile-search-container .word-search-btn:hover {
+  background-color: var(--hoverbg);
+  box-shadow: var(--shadowbtn);
+}
+.search .search-bar, .mobile-search-container .search-bar {
+  border: 2px solid var(--dark);
+  border-radius: 10px;
+  height: 56px;
+}
+.search .search-bar:hover, .mobile-search-container .search-bar:hover {
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.25);
+}
+.search .search-bar input, .mobile-search-container .search-bar input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+.search .search-bar input ::-moz-placeholder, .mobile-search-container .search-bar input ::-moz-placeholder {
+  color: #D0D3DA;
+}
+.search .search-bar input ::placeholder, .mobile-search-container .search-bar input ::placeholder {
+  color: #D0D3DA;
+}
+
+.mobile-search-container {
+  display: none;
+}
+.mobile-search-container .word-search-btn {
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+input:valid + .close-icon {
+  cursor: pointer;
+  display: block !important;
+}
+
+.revealed {
+  display: flex;
+}
+.revealed h1 {
+  font-size: 4rem;
+  font-weight: 600;
+}
+.revealed h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.revealed .play-sound {
+  cursor: pointer;
+}
+.revealed .word span {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.revealed .definitions li {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.revealed .synonyms {
+  width: 100%;
+  gap: 0.6rem;
+}
+.revealed .synonyms .synonym {
+  background-color: #F5F5F5;
+  color: #37393D;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 100px;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0px 2px 4px 0px rgba(76, 93, 112, 0.25);
+}
+
+.back-to-search {
+  cursor: pointer;
+}
+
+.revealed {
+  display: none;
+}
+
+.error-msg {
+  display: none;
+}
+
+@keyframes bounce {
+  0%, 50%, 100% {
+    transform: translateY(0);
+  }
+  25%, 75% {
+    transform: translateY(-6px);
+  }
+}
+@keyframes swing {
+  0%, 50%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-6deg);
+  }
+  75% {
+    transform: rotate(6deg);
+  }
+}
+.about {
+  width: 50%;
+}
+.about h1 {
+  font-size: 4rem;
+  font-weight: 600;
+}
+.about p {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.about .button-container {
+  background-color: var(--dark);
+  max-width: 660px;
+  border-radius: 50px;
+}
+.about .button-container .button {
+  font-size: 1.25rem;
+  font-weight: 500;
+  background-color: var(--dark);
+  border-radius: 50px;
+  padding: 1rem;
+  width: 220px;
+  color: var(--light);
+}
+.about .button-container .button:hover {
+  cursor: pointer;
+  background-color: var(--light);
+  color: var(--dark);
+  transition: all 0.3s ease-in;
+}
+
+.translator-section {
+  width: 70%;
+}
+
+.translator .translatebtn {
+  font-size: 1.25rem;
+  font-weight: 500;
+  background-color: var(--dark);
+  color: var(--light);
+  padding: 1rem;
+  border-radius: 10px;
+}
+.translator .translatebtn:hover {
+  cursor: pointer;
+  background-color: var(--hoverbg);
+  box-shadow: var(--shadowbtn);
+}
+.translator .outer-container {
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+.translator .from-text:hover, .translator .from-text:active {
+  box-shadow: var(--textareahover);
+}
+.translator textarea {
+  width: 100%;
+  height: 214px;
+  overflow-y: scroll;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  border: none;
+}
+.translator .to-text-sound-icon, .translator .to-text-copy-icon {
+  display: none;
+}
+.translator .sound-icon, .translator .copy-icon, .translator .switch-languages-icon {
+  cursor: pointer;
+}
+.translator ::-moz-placeholder {
+  color: #D0D3DA;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.translator ::placeholder {
+  color: #D0D3DA;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.translator select {
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 400;
+  outline: none;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--dark);
+  border-radius: 10px;
+  background-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: var(--chevron);
+  background-repeat: no-repeat;
+  background-position: right 1.5rem top 50%;
+}
+
+.dark-theme {
+  --light:#151515;
+  --dark:#F5F5F5;
+  --gray:#000000;
+  --hoverbg:#F5F5F5;
+  --shadowbtn:0px 8px 12px 0px rgba(0, 0, 0, 1);
+  --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 512 512'%3E%3C!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --%3E%3Cstyle%3Esvg%7Bfill:%23f5f5f5%7D%3C/style%3E%3Cpath d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/%3E%3C/svg%3E");
+  --textareahover: 0px 2px 4px 0px #000000;
+}
+
+#dark {
+  display: none;
+}
+
+#translator-icon-dark {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body .translator-button, body .dictionary-button {
+    width: 100% !important;
+  }
+}
+@media (max-width: 1024px) {
+  body .hamburger.active {
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid var(--dark);
+  }
+  body .hamburger.active .menu-items a {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--dark);
+    padding: 10px 24px;
+    width: 100%;
+    cursor: pointer;
+  }
+  body .hamburger.active .menu-items a:hover {
+    background-color: var(--dark);
+    color: var(--light);
+    transition: all 0.5s ease-in-out;
+  }
+  body .hamburger.active .menu-items :first-of-type {
+    margin-top: 20px;
+  }
+  body .hamburger.active .menu-items :last-of-type {
+    margin-bottom: 20px;
+  }
+  body .main {
+    margin: 8rem auto;
+  }
+  body .navigation {
+    display: none;
+  }
+  body .mobile-nav {
+    display: flex;
+    width: 100%;
+  }
+  body .mobile-nav #hamburger-icon {
+    cursor: pointer;
+  }
+  body .mobile-nav #close-mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+  body .about {
+    width: 100%;
+  }
+  body .about .button-container {
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: transparent;
+  }
+  body .about .button-container .button {
+    width: 100%;
+  }
+  body .search {
+    margin: 12rem auto;
+  }
+  body .mobile-search-container {
+    display: flex;
+  }
+  body .back-to-search {
+    display: none;
+  }
+  body .translator-section {
+    width: 100%;
+  }
+  body .translator {
+    margin: 6rem auto 1rem auto;
+  }
+  body .from-text {
+    box-shadow: var(--textareahover);
+  }
+}/*# sourceMappingURL=styles.css.map */
