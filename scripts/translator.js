@@ -5,6 +5,7 @@ const fromText = $(".enter-text");
 const toText = $(".translation");
 const icons = $("i");
 const switchLanguages = $(".switch-languages-icon");
+const eraseText = $(".remove-text-icon");
 
 //selecting language
 selectLanguage.each(function(id) {
@@ -18,6 +19,12 @@ selectLanguage.each(function(id) {
     let option = `<option value="${country_code}" ${selected}> ${countries[country_code]} </option>`; //setting the value parameter of option, and the contents of our option
     $(this).append(option);
   }
+});
+
+//erasing contents
+eraseText.on("click", function () {
+  textarea = $("textarea");
+  textarea.val("");
 });
 
 //defining icons functionality
