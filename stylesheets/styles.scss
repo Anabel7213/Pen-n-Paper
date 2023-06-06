@@ -1,0 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+//VARIABLES & MIXINS
+$shadow-btn: 0px 8px 12px 0px rgba(76, 93, 112, 0.3);
+$shadow-bg: 0px 8px 16px 0px rgba(0, 0, 0, 0.25);
+$shadow-tag: 0px 2px 4px 0px rgba(76, 93, 112, 0.25);
+:root {
+    --light:#F5F5F5;
+    --dark:#37393D;
+    --gray:#EBECEF;
+    --hoverbg:#000000;
+    --shadowbtn:0px 8px 12px 0px rgba(76, 93, 112, 0.3);
+    --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 512 512'%3E%3C!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --%3E%3Cpath d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/%3E%3C/svg%3E");
+    --textareahover: 0px 2px 4px 0px rgba(76, 93, 112, 0.25);
+}
+
+@mixin font-xl {
+    font-size: 4rem;
+    font-weight: 600;
+}
+@mixin font-lg {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+@mixin font-md {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+@mixin font-sm {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+@mixin font-xs {
+    font-size: 1rem;
+    font-weight: 400;
+}
+@mixin homepageBtn ($background-color) {
+    cursor: pointer;
+    @include font-md;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    width: fit-content;
+    background-color: $background-color;
+}
+//HOMEPAGE
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--dark);
+
+    body {
+        background-color: var(--light) !important;
+        .toggle-theme {
+            cursor: pointer;
+        }
+        .mobile-nav {
+            display:none;
+        }
+        .hamburger {
+            display:none;
+        }
+        .bg-padding {
+            background-color: var(--light);
+            width: 1300px;
+            height: 700px;
+            box-shadow: $shadow-bg;
+            border-radius: 40px;
+        }
+            .right-end {
+                gap: 100px;
+            }
+            .navigation, .mobile-nav {
+                h2 {
+                    cursor: pointer;
+                    @include font-lg;
+                }
+                a {
+                    @include font-md;
+                    text-decoration: none;
+                    color: var(--dark);
+                }
+            }
+                .anchor-item {
+                    &:hover {
+                        border-bottom:4px solid var(--dark);
+                        animation: bounce 2s infinite;
+                    }
+                }
+            .main {
+                max-width: 760px;
+                margin:5rem auto;
+                h1 {
+                    @include font-xl;
+                }
+                p {
+                    @include font-sm;
+                }
+                .translator-button {
+                    @include homepageBtn (var(--dark));
+                    &:hover {
+                        background-color: var(--hoverbg);
+                        box-shadow: var(--shadowbtn);
+                    }
+                    a {
+                        text-decoration: none;
+                        color: var(--light);
+                    }
+                }
+                .dictionary-button {
+                    @include homepageBtn (transparent);
+                    &:hover {
+                        background-color:var(--gray);
+                    }
+                    a {
+                        @include font-md;
+                        text-decoration: none;
+                        color: var(--dark);
+                    }
+                }
+        }
+    }
+}
+
+//DICTIONARY SECTION
+.search {
+    width: fit-content !important;
+    display: flex;
+    margin:6rem auto;
+    h1 {
+        @include font-xl;
+    }
+}
+.search, .mobile-search-container {
+    .word-search-btn {
+        @include font-md;
+        cursor: pointer;
+        text-decoration: none;
+        color: var(--light);
+        padding: 1rem 1.5rem;
+        border-radius: 50px;
+        background-color: var(--dark);
+        width: fit-content;
+        &:hover {
+            background-color: var(--hoverbg);
+            box-shadow: var(--shadowbtn);
+        }
+    }
+    .search-bar {
+        border: 2px solid var(--dark);
+        border-radius: 10px;
+        height: 56px;
+        &:hover {
+            box-shadow:0px 0px 8px 2px rgba(0, 0, 0, 0.25);
+        }
+        input {
+            border: none;
+            background-color: transparent;
+            outline: none;
+            ::placeholder {
+                color: #D0D3DA;
+            }
+        }
+    }
+}
+.mobile-search-container {
+    display:none;
+    .word-search-btn {
+        border-radius:10px;
+        @include font-xs;
+    }
+}
+
+input:valid+.close-icon {
+    cursor: pointer;
+    display: block !important;
+}
+
+textarea:valid+.remove-text-icon {
+    cursor: pointer;
+    display: block !important;
+}
+
+//SEARCHED WORD SECTION
+.revealed {
+    display:flex;
+    h1 {
+        @include font-xl;
+    }
+    h2 {
+        @include font-md;
+    }
+    .play-sound {
+        cursor: pointer;
+    }
+    .word span {
+        @include font-md;
+    }
+    .definitions li {
+        @include font-xs;
+    }
+    .synonyms {
+        width: 100%;
+        gap: .6rem;
+        .synonym {
+            background-color:#F5F5F5;
+            color:#37393D;
+            cursor: pointer;
+            @include font-xs;
+            width: fit-content;
+            border-radius: 100px;
+            padding: .5rem 1.5rem;
+            box-shadow: $shadow-tag;
+        }
+    }
+}
+
+.back-to-search {
+    cursor: pointer;
+}
+.revealed {
+    display: none;
+}
+.error-msg {
+    display: none;
+}
+
+//ANIMATIONS 
+@keyframes bounce {
+    0%, 50%, 100% {
+        transform: translateY(0);
+    }
+    25%, 75% {
+        transform: translateY(-6px);
+    }
+}
+@keyframes swing {
+    0%, 50%, 100% {
+        transform:rotate(0deg);
+    }
+    25% {
+        transform:rotate(-6deg);
+    }
+    75% {
+        transform:rotate(6deg);
+    }
+}
+
+//ABOUT PAGE 
+.about {
+    width:50%;
+    h1 {
+        @include font-xl;
+    }
+    p {
+        @include font-sm;
+    }
+    .button-container {
+        background-color:var(--dark);
+        max-width:660px;
+        border-radius:50px;
+        .button {
+            @include font-md;
+            background-color:var(--dark);
+            border-radius:50px;
+            padding:1rem;
+            width:220px;
+            color:var(--light);
+            &:hover {
+                cursor: pointer;
+                background-color: var(--light);
+                color:var(--dark);
+                transition:all .3s ease-in;
+            }
+        }
+    }
+}
+
+//TRANSLATOR PAGE
+.translator-section {
+    width:70%;
+}
+.translator {
+    .translatebtn {
+        @include font-md;
+        background-color:var(--dark);
+        color:var(--light);
+        padding:1rem;
+        border-radius:10px;
+        &:hover {
+            cursor: pointer;
+            background-color: var(--hoverbg);
+            box-shadow: var(--shadowbtn);
+        }
+    }
+    .outer-container {
+        border-radius:10px;
+        padding:1.5rem;
+    }
+    .from-text {
+        &:hover, &:active {
+            box-shadow: var(--textareahover);
+    }
+    }
+    textarea {
+        width:100%;
+        height:214px;
+        overflow-y: scroll;
+        background-color:transparent;
+        resize:none;
+        outline:none;
+        border:none;
+    }
+    .to-text-sound-icon, .to-text-copy-icon {
+       display:none;  //make appear when toText has content
+    }
+    .sound-icon, .copy-icon, .switch-languages-icon {
+        cursor: pointer;
+    }
+    ::placeholder {
+        color:#D0D3DA;
+        @include font-sm;
+    }
+    select {
+        cursor: pointer;
+        @include font-sm;
+        outline:none;
+        padding:1rem 1.5rem;
+        border:2px solid var(--dark);
+        border-radius:10px;
+        background-color:transparent;
+
+        //replace default chevron//
+        appearance:none;
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        background-image: var(--chevron);
+        background-repeat:no-repeat;
+        background-position: right 1.5rem top 50%;
+    }
+}
+
+//DARK MODE 
+.dark-theme {
+    --light:#151515;
+    --dark:#F5F5F5;
+    --gray:#000000;
+    --hoverbg:#F5F5F5;
+    --shadowbtn:0px 8px 12px 0px rgba(0, 0, 0, 1);
+    --chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 512 512'%3E%3C!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --%3E%3Cstyle%3Esvg%7Bfill:%23f5f5f5%7D%3C/style%3E%3Cpath d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/%3E%3C/svg%3E");
+    --textareahover: 0px 2px 4px 0px #000000;
+}
+#dark {
+    display:none;
+}
+#translator-icon-dark {
+    display:none;
+}
+
+//RESPONSIVENESS
+@media (max-width:768px) {
+    body {
+    //homepage
+       .translator-button, .dictionary-button {
+        width:100% !important;
+       }
+    //translator page
+    }
+}
+@media (max-width:1024px) {
+    body {
+        //mobile menu
+        .hamburger.active {
+            display:block;
+            width:100%;
+            border-bottom:2px solid var(--dark);
+            .menu-items {
+                a {
+                    @include font-sm;
+                    color: var(--dark);
+                    padding:10px 24px;
+                    width:100%;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: var(--dark);
+                        color: var(--light);
+                        -webkit-transition: all .5s ease-in-out;
+                        transition: all 0.5s ease-in-out;
+                    }
+                }
+                :first-of-type {
+                    margin-top:20px;
+                }
+                :last-of-type {
+                    margin-bottom:20px;
+                }
+            }
+        }
+        //homepage
+        .main {
+            margin:8rem auto;
+        }
+        .navigation {
+            display:none;
+           }
+           .mobile-nav {
+            display:flex;
+            width:100%;
+            #hamburger-icon {
+                cursor: pointer;
+            }
+            #close-mobile-menu-icon {
+                display:none;
+                cursor: pointer;
+            }
+           }
+        //about page 
+        .about {
+            width:100%;
+            .button-container {
+                max-width:100%;
+                flex-wrap:wrap;
+                gap:1rem;
+                background-color:transparent;
+                .button {
+                    width:100%;
+                }
+            }
+        }
+        //dictionary page
+        .search {
+            margin:12rem auto;
+        }
+        .mobile-search-container {
+            display:flex; 
+        }
+        .back-to-search {
+            display:none;
+        }
+        //translator page
+        .translator-section {
+            width:100%;
+        }
+        .translator {
+            margin:6rem auto 1rem auto;
+        }
+        .from-text {
+                box-shadow: var(--textareahover);
+        }
+    }
+}
