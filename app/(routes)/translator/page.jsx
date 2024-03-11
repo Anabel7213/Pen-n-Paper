@@ -69,7 +69,7 @@ export default function TranslatorPage() {
         <div className="flex gap-4 w-full items-center">
           <Select defaultValue="en" value={translatedFrom} onValueChange={(value) => setTranslatedFrom(value)}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="English" />
+              <SelectValue defaultValue={"en"} placeholder="English" />
             </SelectTrigger>
             <SelectContent className="h-[300px]">
               {languages.map((language) => (
@@ -82,7 +82,7 @@ export default function TranslatorPage() {
           <ArrowLeftRight onClick={() => {}} className="w-8 h-8" />
           <Select defaultValue="es" value={translatedTo} onValueChange={(value) => setTranslatedTo(value)}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="Spanish" />
+              <SelectValue defaultValue={"es"} placeholder="Spanish" />
             </SelectTrigger>
             <SelectContent className="h-[300px]">
               {languages.map((language) => (
