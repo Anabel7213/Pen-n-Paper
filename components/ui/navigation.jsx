@@ -21,11 +21,14 @@ export default function Menu() {
   ];
   return (
     <>
-      <nav className="flex justify-between py-2 px-6 items-center">
-        <Link href="/" className="font-black">
+      <nav className="flex justify-between py-2 px-4 items-center">
+        <Link href="/" className="hidden md:block font-black">
           Pen & Paper
         </Link>
-        <div className="menu flex gap-6 items-center text-sm font-medium">
+        <Link href="/" className="md:hidden font-black">
+          P&P
+        </Link>
+        <div className="menu flex gap-4 items-center text-sm font-medium">
           {routes.map((route) => (
             <Link
               key={route.href}

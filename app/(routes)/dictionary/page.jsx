@@ -70,20 +70,20 @@ export default function DictionaryPage() {
 
   return (
     <>
-      <div className="flex flex-col mx-10">
+      <div className="flex flex-col mx-auto">
         {/* this can be substituted with the onValueChange in my input field for it
         to make more sense */}
         <div
           className={
-            !definition ? "flex h-screen" : "flex w-full h-fit mt-5 self-end"
+            !definition ? "flex h-screen" : "flex w-full h-fit mt-5 self-end justify-center items-center"
           }
         >
           <form
             onSubmit={handleSubmit}
             className={
               definition
-                ? "flex gap-4 flex-col m-auto w-full"
-                : "flex gap-4 flex-col m-auto"
+                ? "flex gap-4 flex-col m-auto mx-4 w-full"
+                : "flex gap-4 flex-col m-auto mx-4 w-full md:mx-auto md:w-fit"
             }
           >
             <div className="flex gap-3 border p-1 pl-4 rounded-lg">
@@ -91,7 +91,7 @@ export default function DictionaryPage() {
                 className={
                   definition
                     ? "outline-none border-none bg-transparent w-full"
-                    : "outline-none border-none bg-transparent"
+                    : "outline-none border-none bg-transparent w-full"
                 }
                 placeholder="Any word..."
                 type="text"
@@ -106,12 +106,12 @@ export default function DictionaryPage() {
             </div>
           </form>
         </div>
-        <div className="OUTPUT flex flex-col">
+        <div className="OUTPUT flex flex-col mx-4">
           {definition ? (
             definition.items ? (
               <>
                 <div className="MAIN flex flex-col gap-2 my-4">
-                  <h1 className="font-black text-6xl flex items-center gap-4 capitalize">
+                  <h1 className="font-black text-6xl flex items-center gap-4 capitalize justify-between mr-4 md:mr-0 md:justify-start">
                     {definition.target}
                     <Volume2
                       onClick={() => {
@@ -159,7 +159,7 @@ export default function DictionaryPage() {
                         ) => (
                           <div key={index} className="flex gap-4">
                             {inflectionalForm.forms
-                              .slice(0, 4)
+                              ?.slice(0, 4)
                               .filter(
                                 (form) => !form.includes(toExclude)
                               )
@@ -204,8 +204,8 @@ export default function DictionaryPage() {
                               item,
                               index
                             ) => {
-                              const filteredDefinitions = item.definitions
-                                .slice(0, 2)
+                              const filteredDefinitions = item?.definitions
+                                ?.slice(0, 2)
                                 .filter(
                                   (singleDefinition) => {
                                     const modifiedDefinition =
@@ -217,13 +217,13 @@ export default function DictionaryPage() {
                                     );
                                   }
                                 );
-                              if (filteredDefinitions.length > 0) {
+                              if (filteredDefinitions?.length > 0) {
                                 return (
                                   <div
                                     key={index}
                                     className="flex flex-col gap-2"
                                   >
-                                    {filteredDefinitions.map(
+                                    {filteredDefinitions?.map(
                                       (
                                         definition,
                                         subIndex
@@ -247,14 +247,14 @@ export default function DictionaryPage() {
 
                     <div className="flex flex-col">
                       <h1 className="font-bold mb-1">Examples:</h1>
-                      {definition.items && definition.items.length > 0
-                        ? definition.items.map(
+                      {definition?.items && definition?.items.length > 0
+                        ? definition?.items.map(
                             (
                               item,
                               index
                             ) => (
                               <div key={index}>
-                                {item.definitions.map(
+                                {item?.definitions?.map(
                                   (
                                     definition,
                                     subIndex
@@ -263,10 +263,10 @@ export default function DictionaryPage() {
                                       key={subIndex}
                                       className="flex flex-col gap-2"
                                     >
-                                      {definition.examples &&
-                                        definition.examples.length > 0 && (
+                                      {definition?.examples &&
+                                        definition?.examples?.length > 0 && (
                                           <div className="flex flex-col gap-2">
-                                            {definition.examples
+                                            {definition?.examples
                                               .filter(
                                                 (example) =>
                                                   !/<sup>.*?<\/sup>/.test(
@@ -307,19 +307,19 @@ export default function DictionaryPage() {
                       <div className="flex flex-col gap-4">
                         <h1 className="font-bold md:self-end">Synonyms:</h1>
                         <div className="flex gap-2 flex-wrap md:justify-end">
-                          {definition.items &&
-                          definition.items.length > 0 &&
-                          definition.items[0].synonyms ? (
-                            definition.items[0].synonyms.map(
+                          {definition?.items &&
+                          definition?.items?.length > 0 &&
+                          definition?.items[0]?.synonyms ? (
+                            definition?.items[0]?.synonyms?.map(
                               (synonym, index) => {
                                 const chunk = synonym.split(":");
                                 const modifiedChunk = cleanHTML(
-                                  chunk[chunk.length - 1].trim()
+                                  chunk[chunk?.length - 1].trim()
                                 );
                                 const words = modifiedChunk
                                   .split(",")
-                                  .map((word) => word.trim().replace(/\)$/, ""))
-                                  .map((word) => word.split("/")[1] || word);
+                                  .map((word) => word?.trim().replace(/\)$/, ""))
+                                  .map((word) => word?.split("/")[1] || word);
                                 let renderedCount = 0; // Counter for rendered spans
 
                                 return (
@@ -370,19 +370,19 @@ export default function DictionaryPage() {
                       <div className="flex flex-col gap-4">
                         <h1 className="font-bold md:self-end">Antonyms:</h1>
                         <div className="flex gap-2 flex-wrap md:justify-end">
-                          {definition.items &&
-                          definition.items.length > 0 &&
-                          definition.items[0].antonyms ? (
-                            definition.items[0].antonyms.map(
+                          {definition?.items &&
+                          definition?.items?.length > 0 &&
+                          definition?.items[0]?.antonyms ? (
+                            definition?.items[0]?.antonyms?.map(
                               (antonym, index) => {
                                 const chunk = antonym.split(":");
                                 const modifiedChunk = cleanHTML(
-                                  chunk[chunk.length - 1].trim()
+                                  chunk[chunk?.length - 1].trim()
                                 );
                                 const words = modifiedChunk
                                   .split(",")
-                                  .map((word) => word.trim().replace(/\)$/, ""))
-                                  .map((word) => word.split("/")[1] || word);
+                                  .map((word) => word?.trim().replace(/\)$/, ""))
+                                  .map((word) => word?.split("/")[1] || word);
 
                                 let renderedCount = 0; // Counter for rendered spans
 

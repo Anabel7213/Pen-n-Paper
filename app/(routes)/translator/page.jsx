@@ -37,8 +37,8 @@ export default function TranslatorPage() {
     e.preventDefault();
     try {
       const response = await axios.request(options);
-      setTranslation(response.data);
-      console.log(response.data);
+      setTranslation(response?.data);
+      console.log(response?.data);
     } catch (err) {
       console.log(err);
     }
@@ -60,18 +60,11 @@ export default function TranslatorPage() {
     }
   }
 
-  // const handleSwitchLanguages = () => { //not working as of now
-  //     setTranslatedFrom(translatedTo) 
-  //     setTranslation(toTranslate.valueOf)
-  //     setTranslatedTo(translatedFrom)
-  //     setToTranslate(translation.valueOf)
-  // }
-
   return (
     <>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 h-screen mx-10 my-5"
+        className="flex flex-col gap-4 h-screen mx-4 md:mx-10 my-5"
       >
         <div className="flex gap-4 w-full items-center">
           <Select defaultValue="en" value={translatedFrom} onValueChange={(value) => setTranslatedFrom(value)}>
@@ -100,14 +93,14 @@ export default function TranslatorPage() {
             </SelectContent>
           </Select>
         </div>
-        <div className="md:flex gap-4 md:w-full sm:flex sm:w-full sm:flex-wrap md:flex-nowrap">
+        <div className="flex flex-col gap-4 md:w-full sm:flex sm:w-full sm:flex-wrap md:flex-nowrap">
           <div className="flex w-full border rounded-lg dark:border-slate-800 dark:bg-slate-950">
             <div className="flex flex-col gap-4 w-full p-4">
-              <div className="flex gap-4 w-full">
+              <div className="flex gap-4 w-full h-[264px] md:h-[216px]">
                 <textarea
                   value={toTranslate}
                   onChange={(e) => setToTranslate(e.target.value)}
-                  className="resize-none bg-transparent h-[264px] outline-none w-full border-none"
+                  className="resize-none bg-transparent outline-none w-full border-none"
                 />
                 <Button variant="ghost">
                   <Copy className="w-5 h-5" onClick={toTranslate && (() => navigator.clipboard.writeText(toTranslate))} />
@@ -124,12 +117,12 @@ export default function TranslatorPage() {
             </div>
           </div>
 
-          <div className="flex w-full rounded-lg bg-slate-100 dark:bg-slate-950">
+          <div className="flex w-full rounded-lg bg-slate-100 dark:bg-slate-950 mb-5">
             <div className="flex flex-col gap-4 w-full p-4">
-              <div className="flex gap-4 w-full">
+              <div className="flex gap-4 w-full h-[264px] md:h-[216px]">
                 <textarea
                   value={translation && translation.responseData.translatedText}
-                  className="resize-none bg-transparent h-[264px] outline-none w-full border-none"
+                  className="resize-none bg-transparent outline-none w-full border-none"
                   readOnly
                 />
                 <Button variant="ghost">

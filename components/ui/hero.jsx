@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen m-4">
       <div className="m-auto flex flex-col gap-4 max-w-[400px]">
         <span role="img" aria-label="waving-hand" className="text-4xl">
           👋

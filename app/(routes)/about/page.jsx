@@ -20,7 +20,7 @@ export default function AboutPage() {
     ]
   return (
     <>
-      <div className="flex h-screen">
+      <div className="flex h-screen mx-4">
         <div className="m-auto flex flex-col gap-4 max-w-[400px]">
           <h3 className="font-black text-6xl">About</h3>
           <p className="font-medium flex flex-wrap">
