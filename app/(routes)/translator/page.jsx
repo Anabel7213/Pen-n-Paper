@@ -64,7 +64,7 @@ export default function TranslatorPage() {
     <>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 h-screen mx-4 md:mx-10 my-5"
+        className="flex flex-col gap-4 h-screen mx-4 my-5"
       >
         <div className="flex gap-4 w-full items-center">
           <Select defaultValue="en" value={translatedFrom} onValueChange={(value) => setTranslatedFrom(value)}>
